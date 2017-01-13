@@ -2,8 +2,8 @@
 - name: Download cig binary.
   become: yes
   get_url:
-    url: "https://github.com/stevenjack/cig/releases/download/v0.1.5/cig_{{ ansible_system }}_{{ ansible_architecture }}"
+    url: "{{ cig_github_repo_url }}/releases/download/v{{ cig_version }}/cig_{{ ansible_system }}_{{ ansible_architecture }}"
     dest: /usr/local/bin/cgi
     mode: "0755"
     # Hard-coding the checksum as a guard against regression.
-    sha256sum: 9a89351098f7f750c6972cfdb2c6aeb9753744a91ab2e2c162ac94fdc4ebbf30
+    sha256sum: "{{ cig_checksum }}"
